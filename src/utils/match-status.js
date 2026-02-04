@@ -24,7 +24,7 @@ export async function syncMatchStatus(match, updateStatus) {
     if (!nextStatus) {
         return match.status;
     }
-    if (match.status != nextStatus) { 
+    if (match.status !== nextStatus) { 
         await updateStatus(nextStatus);
         match.status = nextStatus;
     }

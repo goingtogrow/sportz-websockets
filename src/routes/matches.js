@@ -13,7 +13,7 @@ matchRouter.get('/', async (req, res) => {
     const parsed = listMatchesQuerySchema.safeParse(req.query)
 
     if(!parsed.success) {
-        return res.status(400).json({ error: "invalid ", details: JSON.stringify(parsed.error)})
+        return res.status(400).json({ error: "invalid query parametrs", details: parsed.error.format() })
     }    
 
     const limit = Math.min(parsed.data.limit ?? 50, MAX_LIMIT)
@@ -65,9 +65,6 @@ matchRouter.post('/', async (req, res) => {
   } catch (e) {
     console.error(e);
 
-    res.status(500).json({
-      error: 'Failed to create match',
-      details: e.message,
-    });
+    res.status(500).json({ error: 'Failed to create match' });
   }
 });
