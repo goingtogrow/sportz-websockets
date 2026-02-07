@@ -3,7 +3,6 @@ import http from 'http'
 import { matchRouter } from './routes/matches.js';
 import { apiLimiter } from './middleware/limiter.js';
 import { attachWebSocketServer } from './ws/ws-server.js';
-import { base64 } from 'zod';
 
 const PORT = Number(process.env.PORT || 8000);
 const HOST = process.env.HOST || '0.0.0.0';
